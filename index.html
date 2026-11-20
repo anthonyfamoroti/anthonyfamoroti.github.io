@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthony Famoroti – Portfolio</title>
+<meta name="description" content="Portfolio of Ademide Anthony Famoroti – Computing student, CompTIA Security+ and Network+ certified, aspiring SOC analyst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, confident junior security analyst — clear, factual, no hype.
+   IDEA: a network map from a SOC console — every node is clean, one packet is flagged and caught.
+   PICTURE: hero topology diagram (laptop → router → firewall → server) with an alert being inspected.
+   COLOUR and TYPE: deep green ground, lime-white signal, coral for alerts; Inter Tight + Inter, mono only for code.
+   LAYOUT: full-width green hero, then white bands: about, projects, skills, experience, certs, CV/contact. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#ffffff,#0f1714);--ink:light-dark(#14201c,#e7efe9);--mute:light-dark(#53625c,#9db0a7);
+ --line:light-dark(#dde5e1,#24332d);--soft:light-dark(#f2f6f3,#16221d);
+ --g:#00463c;--g2:#0b5c4f;--lime:#e6f5c8;--coral:#ff6f59;--link:light-dark(#00695a,#9fe0c8)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--link)}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h2{font-size:clamp(28px,3.4vw,40px)}h3{font-size:20px}
+p{max-width:68ch}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}
+.band.alt{background:var(--soft)}
+.lede{color:var(--mute);font-size:17px;margin-top:-4px}
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:var(--g);color:#fff;border-bottom:1px solid #ffffff22}
+nav .wrap{display:flex;align-items:center;gap:20px;padding:10px max(5vw,16px);flex-wrap:wrap}
+nav b{font-family:"Inter Tight";font-size:18px;margin-right:auto}
+nav .links{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-size:15px;padding:10px 10px;border-radius:8px;min-height:44px;display:inline-flex;align-items:center}
+nav a:hover,nav a:focus-visible{background:#ffffff1f}
+/* hero */
+.hero{background:var(--g);color:#fff;padding:clamp(36px,6vw,80px) max(5vw,16px) clamp(40px,6vw,88px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center}
+.who{display:flex;gap:18px;align-items:center;margin-bottom:22px}
+.photo{width:96px;height:96px;border-radius:50%;background:var(--lime);color:var(--g);display:grid;place-items:center;font:700 34px "Inter Tight";flex:none;border:3px solid #ffffff55;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-size:clamp(34px,5vw,52px);margin:0}
+.hero .role{color:var(--lime);font-size:18px;margin:6px 0 0}
+.hero p{color:#e4efe9;font-size:17px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.badges span{background:#ffffff14;border:1px solid #ffffff33;border-radius:99px;padding:5px 12px;font-size:14px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;font-weight:600;text-decoration:none;margin:0 10px 10px 0}
+.btn.p{background:var(--lime);color:var(--g)}.btn.s{border:1.5px solid #ffffff88;color:#fff}
+.btn:focus-visible,nav a:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.fig{position:relative;aspect-ratio:1.15}.fig svg{position:absolute;inset:0;width:100%;height:100%}
+.pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.35}}
+.pkt{animation:m 5s linear infinite}@keyframes m{from{offset-distance:0%}to{offset-distance:100%}}
+@media(prefers-reduced-motion:reduce){.pulse,.pkt{animation:none}html{scroll-behavior:auto}}
+/* about */
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.goal{border-left:4px solid var(--g2);padding:4px 0 4px 18px;margin:0 0 18px}
+.goal b{display:block}
+/* projects */
+.proj{display:grid;gap:28px}
+.card{border:1px solid var(--line);border-radius:16px;background:var(--bg);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
+.shot{background:var(--g);color:var(--lime);display:grid;place-items:center;min-height:240px;padding:20px;text-align:center;font-size:14px}
+.shot{align-items:start;padding-top:32px}.shot svg{width:100%;max-width:320px;height:auto;position:sticky;top:96px}
+.body{padding:clamp(20px,3vw,32px)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.tags span{font-size:13px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 9px}
+dl{margin:0;display:grid;gap:10px}dt{font-weight:600}dd{margin:0;color:var(--mute)}
+dd ul{margin:4px 0 0;padding-left:20px}
+.code{margin-top:16px;border-radius:10px;background:#0f1d19;color:#d9efe4;font:13.5px/1.55 "JetBrains Mono",monospace;overflow:hidden}
+.code header{display:flex;justify-content:space-between;align-items:center;padding:6px 6px 6px 14px;background:#ffffff10;font-family:Inter;font-size:13px}
+.code button{font:inherit;background:#ffffff1c;color:#fff;border:0;border-radius:6px;min-height:34px;padding:0 12px;cursor:pointer}
+.code pre{margin:0;padding:14px;overflow-x:auto}
+.k{color:#ffb4a6}.c{color:#8fb3a5}.s2{color:#cdeaa0}
+.gh{display:inline-flex;align-items:center;gap:6px;font-weight:600;margin-top:16px;min-height:44px}
+/* skills */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px}
+.box{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--bg)}
+.box h3{font-size:17px}
+.box ul{margin:0;padding-left:18px}
+.bar{margin:8px 0 12px}.bar div{display:flex;justify-content:space-between;font-size:14px}
+.bar i{display:block;height:7px;border-radius:9px;background:var(--line);margin-top:4px;overflow:hidden}
+.bar i b{display:block;height:100%;background:var(--g2)}
+.ev{color:var(--mute);font-size:15px}
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 28px 26px}
+.tl li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--g2)}
+.tl .when{font-size:14px;color:var(--mute);white-space:nowrap}
+.tl ul{margin:6px 0 0;padding-left:18px}
+.cert{display:flex;gap:14px;align-items:flex-start}
+.seal{flex:none;width:52px;height:52px;border-radius:12px;background:var(--g);color:var(--lime);display:grid;place-items:center;font:700 13px "Inter Tight"}
+.seal.wip{background:transparent;border:2px dashed var(--coral);color:var(--coral)}
+/* contact */
+.cta{background:var(--g);color:#fff}
+.cta p{color:#e4efe9}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;margin-top:24px}
+.contact a{display:block;background:#ffffff12;border:1px solid #ffffff2e;border-radius:12px;padding:16px;color:#fff;text-decoration:none;min-height:44px}
+.contact a span{display:block;color:var(--lime);font-size:14px}
+footer{padding:22px max(5vw,16px);font-size:14px;color:var(--mute);text-align:center}
+@media(max-width:860px){.hero .wrap,.cols,.card{grid-template-columns:minmax(0,1fr)}.shot{min-height:180px}}
+@media(max-width:600px){nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}nav .links::-webkit-scrollbar{display:none}nav a{flex:none}.who{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+
+<nav aria-label="Main">
+ <div class="wrap">
+  <b>Anthony Famoroti</b>
+  <div class="links">
+   <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
+   <a href="#experience">Experience</a><a href="#certs">Certifications</a><a href="#contact">CV &amp; contact</a>
+  </div>
+ </div>
+</nav>
+
+<header class="hero" id="top">
+ <div class="wrap">
+  <div>
+   <div class="who">
+    <div class="photo" aria-hidden="true">AF</div>
+    <div>
+     <h1>Ademide Anthony Famoroti</h1>
+     <p class="role">Computer Science student · Aspiring SOC Analyst</p>
+    </div>
+   </div>
+   <p>I'm a BSc (Hons) Computer Science student at the University of Dundee with CompTIA Security+ and Network+ certifications. I build tools in Python and C, from a network log analyser to a hash-table login system, and I'm working towards an entry-level role in a security operations centre.</p>
+   <div class="badges"><span>CompTIA Security+</span><span>CompTIA Network+</span><span>Python</span><span>C</span><span>Log analysis</span><span>CEH v13 in progress</span></div>
+   <a class="btn p" href="#projects">See my projects</a>
+   <a class="btn s" href="Anthony_Famoroti_CV.pdf">Download CV (PDF)</a>
+  </div>
+
+  <div class="fig" role="img" aria-label="Network diagram: a laptop, router, firewall and server, with one suspicious packet flagged at the firewall">
+   <svg viewBox="0 0 460 400" fill="none">
+    <defs>
+     <linearGradient id="nd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a7a69"/><stop offset="1" stop-color="#0b5c4f"/></linearGradient>
+    </defs>
+    <path id="route" d="M80 110 L230 110 L230 230 L380 230 L380 330" stroke="#e6f5c8" stroke-opacity=".35" stroke-width="3" stroke-dasharray="6 7"/>
+    <path d="M230 230 L80 300" stroke="#e6f5c8" stroke-opacity=".25" stroke-width="3" stroke-dasharray="6 7"/>
+    <g>
+     <rect x="30" y="72" width="100" height="70" rx="12" fill="url(#nd)" stroke="#e6f5c8" stroke-opacity=".5"/>
+     <rect x="44" y="84" width="72" height="40" rx="4" fill="#00463c"/>
+     <path d="M48 116h20M48 106h40M48 96h30" stroke="#e6f5c8" stroke-width="3" stroke-linecap="round"/>
+     <text x="80" y="164" fill="#e6f5c8" font-size="14" text-anchor="middle" font-family="Inter">Workstation</text>
+    </g>
+    <g>
+     <rect x="186" y="84" width="88" height="52" rx="12" fill="url(#nd)" stroke="#e6f5c8" stroke-opacity=".5"/>
+     <circle cx="208" cy="110" r="5" fill="#e6f5c8"/><circle cx="226" cy="110" r="5" fill="#e6f5c8" class="pulse"/><circle cx="244" cy="110" r="5" fill="#e6f5c8"/>
+     <text x="230" y="64" fill="#e6f5c8" font-size="14" text-anchor="middle" font-family="Inter">Router</text>
+    </g>
+    <g>
+     <rect x="180" y="196" width="100" height="68" rx="12" fill="url(#nd)" stroke="#ff6f59" stroke-width="2"/>
+     <path d="M196 214h68M196 230h68M196 246h68M218 206v12M248 222v12M218 238v12" stroke="#e6f5c8" stroke-opacity=".75" stroke-width="3"/>
+     <text x="230" y="288" fill="#e6f5c8" font-size="14" text-anchor="middle" font-family="Inter">Firewall</text>
+    </g>
+    <g>
+     <rect x="330" y="300" width="100" height="74" rx="12" fill="url(#nd)" stroke="#e6f5c8" stroke-opacity=".5"/>
+     <path d="M346 318h68M346 336h68M346 354h68" stroke="#e6f5c8" stroke-width="5" stroke-linecap="round" stroke-opacity=".8"/>
+     <text x="380" y="394" fill="#e6f5c8" font-size="14" text-anchor="middle" font-family="Inter">Server</text>
+    </g>
+    <g>
+     <rect x="30" y="276" width="100" height="56" rx="12" fill="url(#nd)" stroke="#e6f5c8" stroke-opacity=".5"/>
+     <circle cx="80" cy="304" r="14" stroke="#e6f5c8" stroke-width="3"/><path d="M80 290v28M66 304h28" stroke="#e6f5c8" stroke-width="2"/>
+     <text x="80" y="354" fill="#e6f5c8" font-size="14" text-anchor="middle" font-family="Inter">Internet</text>
+    </g>
+    <circle r="7" fill="#e6f5c8" class="pkt" style="offset-path:path('M80 110 L230 110 L230 230 L380 230 L380 330')"/>
+    <g transform="translate(272 168)">
+     <rect width="168" height="46" rx="10" fill="#ff6f59"/>
+     <text x="14" y="20" fill="#2a0d07" font-size="13" font-weight="600" font-family="Inter">Alert: traffic spike</text>
+     <text x="14" y="37" fill="#2a0d07" font-size="12" font-family="Inter">203.0.113.7 · flagged</text>
+    </g>
+    <circle cx="155" cy="300" r="7" fill="#ff6f59" class="pulse"/>
+   </svg>
+  </div>
+ </div>
+</header>
+
+<section class="band" id="about">
+ <div class="wrap cols">
+  <div>
+   <h2>About me</h2>
+   <p>I grew up curious about how systems work and what happens when they break. After A levels in Mathematics, Computer Science and Economics at The Becket Sixth Form in Nottingham, I started a BSc (Hons) Computer Science degree at the University of Dundee and spent my own time earning CompTIA Network+ (November 2025) and Security+ (April 2026), practising in hands-on simulation labs.</p>
+   <p>I like turning messy data into something you can act on — which is why my favourite project is a Python tool that reads network logs and flags unusual behaviour. Retail and sales jobs taught me to stay calm with people under pressure and explain things clearly, which matters just as much when you're escalating an incident.</p>
+   <p>Outside tech I enjoy cooking, volunteering and problem-solving puzzles. Each one rewards patience, following a method and adjusting when something doesn't go to plan, and that's the same mindset I bring to debugging and investigation.</p>
+  </div>
+  <div>
+   <h3>Career goals</h3>
+   <div class="goal"><b>Now</b>Start as a Level 1 SOC Analyst in a 24/7 security operations centre: monitoring and triaging alerts, investigating incidents, escalating with clear context and documenting what I find.</div>
+   <div class="goal"><b>Next</b>Complete EC-Council CEH v13, get hands-on with SIEM and SOAR platforms such as Microsoft Sentinel and Splunk, and work towards CySA+.</div>
+   <div class="goal"><b>Long term</b>Work as a security analyst protecting real organisations, and move towards threat hunting or penetration testing.</div>
+  </div>
+ </div>
+</section>
+
+<section class="band alt" id="projects">
+ <div class="wrap">
+  <h2>Projects</h2>
+  <p class="lede">Three projects that show how I code, test and solve problems, with the most relevant to security first.</p>
+  <div class="proj">
+
+   <article class="card">
+    <div class="shot">
+     <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" rx="10" fill="#0f1d19"/><g font-family="JetBrains Mono,monospace" font-size="11" fill="#d9efe4"><text x="14" y="28">$ python log_analyzer.py</text><text x="14" y="52" fill="#8fb3a5">reading network log…</text><text x="14" y="76">normal traffic      OK</text><text x="14" y="98">known hosts         OK</text><text x="14" y="120" fill="#ff6f59">traffic spike       FLAG</text><text x="14" y="142" fill="#ff6f59">irregular IP        FLAG</text></g></svg>
+    </div>
+    <div class="body">
+     <h3>Network Traffic Log Analyser</h3>
+     <div class="tags"><span>Python</span><span>Log parsing</span><span>Network security</span><span>Incident response</span></div>
+     <dl>
+      <dt>Overview</dt><dd>A Python tool that reads network logs and flags unusual activity, such as irregular IP behaviour and sudden traffic spikes. A suspicious source can be spotted in seconds instead of by scrolling through thousands of lines by hand.</dd>
+      <dt>My role</dt><dd>Solo project. I designed, built and tested the parser, the filters and the detection rules.</dd>
+      <dt>Challenges &amp; solutions</dt><dd><ul>
+       <li>Log entries weren't always consistent → wrote parsing and filtering that cleans each entry before it's analysed.</li>
+       <li>Telling a normal busy period from a real threat → applied Security+ principles to decide what counts as suspicious, then tested the results against simulated investigation workflows.</li>
+      </ul></dd>
+      <dt>What I learned</dt><dd>How analysts triage alerts, and why clear, repeatable detection logic matters in incident response.</dd>
+     </dl>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="shot">
+     <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" rx="10" fill="#0b5c4f"/><g font-family="Inter,sans-serif" font-size="11" fill="#e6f5c8"><g><rect x="16" y="14" width="34" height="18" rx="4" fill="#00463c"/><text x="33" y="27" text-anchor="middle">[0]</text></g><g><rect x="16" y="44" width="34" height="18" rx="4" fill="#00463c"/><text x="33" y="57" text-anchor="middle">[2]</text><path d="M50 53h16" stroke="#e6f5c8"/><rect x="66" y="44" width="62" height="18" rx="4" fill="#e6f5c8"/><text x="97" y="57" text-anchor="middle" fill="#00463c">id 123</text></g><g><rect x="16" y="74" width="34" height="18" rx="4" fill="#00463c"/><text x="33" y="87" text-anchor="middle">[4]</text><path d="M50 83h16" stroke="#e6f5c8"/><rect x="66" y="74" width="62" height="18" rx="4" fill="#e6f5c8"/><text x="97" y="87" text-anchor="middle" fill="#00463c">id 455</text><path d="M128 83h16" stroke="#e6f5c8"/><rect x="144" y="74" width="62" height="18" rx="4" fill="#ff6f59"/><text x="175" y="87" text-anchor="middle" fill="#2a0d07">id 136</text></g><g><rect x="16" y="104" width="34" height="18" rx="4" fill="#00463c"/><text x="33" y="117" text-anchor="middle">[6]</text></g><g><rect x="16" y="134" width="34" height="18" rx="4" fill="#00463c"/><text x="33" y="147" text-anchor="middle">[10]</text></g><text x="150" y="150" fill="#e6f5c8">collision → chained</text></g></svg>
+    </div>
+    <div class="body">
+     <h3>Secure User Login System: Hash Table in C</h3>
+     <div class="tags"><span>C</span><span>Hash tables</span><span>Linked lists</span><span>malloc / free</span><span>File I/O</span><span>Authentication</span></div>
+     <dl>
+      <dt>Overview</dt><dd>A user registration and login system written in C. Accounts are stored in an 11-bucket hash table, and the program can register users, update passwords, check a login, and load existing accounts from a text file.</dd>
+      <dt>My role</dt><dd>Implemented the full hash table module (<code>hash_table.c</code>): initialising the table, the hash function, look-up, registration, password checking, loading from file and freeing memory. I tested it through a command-line program that loads the users, registers a user and checks a password.</dd>
+      <dt>Challenges &amp; solutions</dt><dd><ul>
+       <li>Two user IDs can land in the same bucket (for example 4, 15 and 26 all map to bucket 4) → used separate chaining, so each bucket holds a linked list and new users are added at the front.</li>
+       <li>Bad input could crash the program → every function checks for NULL pointers, negative IDs and passwords longer than 40 characters, and the file loader stops cleanly on malformed lines.</li>
+       <li>Memory leaks with dynamic allocation → <code>free_buckets</code> walks every chain and frees each node before resetting the bucket.</li>
+      </ul></dd>
+      <dt>Security reflection</dt><dd>Passwords are currently stored in plain text. In a real system I would store a salted hash (for example bcrypt or Argon2), so that a leaked user file wouldn't reveal anyone's password. That's directly relevant to the authentication topics in Security+.</dd>
+     </dl>
+     <div class="code">
+      <header><span>From my code: finding a user in its bucket</span><button type="button" data-copy="c1">Copy</button></header>
+<pre id="c1"><span class="k">User</span> *find_user(<span class="k">const</span> HashTable *ht, <span class="k">int</span> user_id)
+{
+    <span class="k">if</span> (ht == NULL || user_id &lt; <span class="s2">0</span>)
+        <span class="k">return</span> NULL;
+
+    <span class="k">int</span> table = get_bucket_for_user(user_id);  <span class="c">// user_id % 11</span>
+    <span class="k">User</span> *pointer = ht-&gt;buckets[table];
+
+    <span class="k">while</span> (pointer != NULL)                    <span class="c">// walk the chain</span>
+    {
+        <span class="k">if</span> (pointer-&gt;user_id == user_id)
+            <span class="k">return</span> pointer;
+        pointer = pointer-&gt;next;
+    }
+    <span class="k">return</span> NULL;
+}</pre>
+     </div>
+     <a class="gh" href="projects/login-system-c/">View the full source code →</a>
+    </div>
+   </article>
+
+   <article class="card">
+    <div class="shot">
+     <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" rx="10" fill="#0b5c4f"/><rect y="138" width="300" height="42" fill="#00463c"/><rect x="46" y="104" width="34" height="34" rx="4" fill="#e6f5c8"/><path d="M150 138l18-34 18 34zM214 138l14-26 14 26z" fill="#ff6f59"/><circle cx="270" cy="70" r="8" fill="#e6f5c8"/></svg>
+    </div>
+    <div class="body">
+     <h3>Geometry Hop: 2D Endless Runner</h3>
+     <div class="tags"><span>Python</span><span>Pygame</span><span>Object-oriented design</span><span>Testing</span></div>
+     <dl>
+      <dt>Overview</dt><dd>A fully playable 2D endless runner with real-time physics, responsive controls, and procedurally generated obstacles and collectibles that get harder as you go.</dd>
+      <dt>My role</dt><dd>Solo developer, covering game design, programming, testing and debugging.</dd>
+      <dt>Challenges &amp; solutions</dt><dd><ul>
+       <li>Basic hitboxes caused unfair collisions → replaced them with more accurate geometric collision detection.</li>
+       <li>The code got harder to change as features grew → restructured it into classes (player, obstacles, scoring) to keep it maintainable.</li>
+       <li>Gameplay stuttered → found and fixed performance issues through testing.</li>
+      </ul></dd>
+      <dt>What I learned</dt><dd>Object-oriented design, methodical debugging, and testing until the experience feels right for the player.</dd>
+     </dl>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section class="band" id="skills">
+ <div class="wrap">
+  <h2>Skills</h2>
+  <p class="lede">Technical skills with where I've used them, and transferable skills with real examples.</p>
+  <div class="grid3">
+   <div class="box">
+    <h3>Security &amp; networking</h3>
+    <ul><li>Network traffic &amp; log analysis</li><li>Security principles &amp; frameworks</li><li>SIEM concepts</li><li>Networking fundamentals &amp; troubleshooting</li><li>CompTIA hands-on simulation labs</li></ul>
+    <p class="ev">Evidence: Security+, Network+, Log Analyser and Login System projects.</p>
+   </div>
+   <div class="box">
+    <h3>Programming</h3>
+    <div class="bar"><div><span>Python</span><span>Intermediate</span></div><i><b style="width:60%"></b></i></div>
+    <div class="bar"><div><span>Object-oriented programming</span><span>Intermediate</span></div><i><b style="width:55%"></b></i></div>
+    <div class="bar"><div><span>C</span><span>Developing</span></div><i><b style="width:45%"></b></i></div>
+    <div class="bar"><div><span>Pygame</span><span>Working</span></div><i><b style="width:45%"></b></i></div>
+    <p class="ev">Evidence: Geometry Hop, Log Analyser, Login System.</p>
+   </div>
+   <div class="box">
+    <h3>Tools</h3>
+    <ul><li>Microsoft Excel &amp; Access</li><li>GCC compiler and command line</li><li>Pygame</li></ul>
+    <h3 style="margin-top:16px">Data structures</h3><ul><li>Hash tables and hashing</li><li>Linked lists</li><li>Dynamic memory (malloc/free)</li></ul>
+   </div>
+  </div>
+
+  <h3 style="margin-top:40px">Transferable skills in action</h3>
+  <div class="grid3">
+   <div class="box"><h3>Communication</h3><p class="ev">At The Blackstar Group I explained products to customers every day and adapted my approach to what each person needed.</p></div>
+   <div class="box"><h3>Teamwork</h3><p class="ev">Worked closely with colleagues in a fast-paced sales team and supported daily store operations at Cancer Research UK.</p></div>
+   <div class="box"><h3>Problem-solving</h3><p class="ev">Tracked down performance problems in Geometry Hop through testing, and handled every edge case (bad input, missing files, long passwords) in my C login system.</p></div>
+   <div class="box"><h3>Time management</h3><p class="ev">Handled several tasks at once in a busy charity shop while keeping service quality high.</p></div>
+   <div class="box"><h3>Attention to detail</h3><p class="ev">Organised stock accurately at Cancer Research UK — the same care I apply when reading logs for anomalies.</p></div>
+   <div class="box"><h3>Self-motivation</h3><p class="ev">Studied for and passed two CompTIA certifications in my own time while at university.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="band alt" id="experience">
+ <div class="wrap cols">
+  <div>
+   <h2>Experience</h2>
+   <ol class="tl">
+    <li><b>Sales Assistant</b> · The Blackstar Group, Nottingham <div class="when">Jul 2025 – Sep 2025 · Part-time</div>
+     <ul><li>Applied different sales techniques to help the team meet its targets.</li><li>Built confidence explaining products and understanding customer needs.</li></ul></li>
+    <li><b>Retail Assistant (Internship)</b> · Cancer Research UK, Nottingham <div class="when">Jan 2024 – Feb 2024</div>
+     <ul><li>Delivered customer service in a busy shop and supported daily operations.</li><li>Organised stock with close attention to detail.</li></ul></li>
+    <li><b>Technology Intern</b> · Global Accelerex <div class="when">Jun 2021 – Sep 2021</div>
+     <ul><li>Gained hands-on exposure to computer systems, completed basic coding tasks and built problem-solving skills alongside technical staff.</li></ul></li>
+   </ol>
+  </div>
+  <div>
+   <h2>Education</h2>
+   <ol class="tl">
+    <li><b>University of Dundee</b> · BSc (Hons) Computer Science <div class="when">September 2025 – present</div>
+     <ul><li>Relevant study: programming in C and Python, data structures, Employability for Computing Professionals (CS21001)</li></ul></li>
+    <li><b>The Becket Sixth Form</b>, Nottingham <div class="when">September 2023 – June 2025</div>
+     <ul><li>A levels: Mathematics (A), Computer Science (B), Economics (B)</li></ul></li>
+   </ol>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="certs">
+ <div class="wrap">
+  <h2>Certifications</h2>
+  <div class="grid3">
+   <div class="box cert"><div class="seal">Sec+</div><div><b>CompTIA Security+ ce</b><div class="ev">Issued April 2026 · Valid to April 2029</div><div class="ev">Covers threats, vulnerabilities, security operations, incident response and access control.</div></div></div>
+   <div class="box cert"><div class="seal">Net+</div><div><b>CompTIA Network+ ce</b><div class="ev">Issued November 2025 · Valid to April 2029</div><div class="ev">Covers network design, TCP/IP, troubleshooting and network security.</div></div></div>
+   <div class="box cert"><div class="seal wip">CEH</div><div><b>EC-Council CEH v13</b><div class="ev">In progress</div><div class="ev">Building offensive-security knowledge to understand how attackers think.</div></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="band cta" id="contact">
+ <div class="wrap">
+  <h2>CV &amp; contact</h2>
+  <p>I'm open to placements, internships and graduate roles in cyber security and IT. The quickest way to reach me is by email.</p>
+  <a class="btn p" href="Anthony_Famoroti_CV.pdf">Download my CV (PDF)</a>
+  <div class="contact">
+   <a href="mailto:ademide.famoroti@gmail.com"><span>Email</span>ademide.famoroti@gmail.com</a>
+   <a href="https://www.linkedin.com/in/anthony-famoroti"><span>LinkedIn</span>linkedin.com/in/anthony-famoroti</a>
+  </div>
+ </div>
+</section>
+
+<footer>
+ © 2026 Ademide Anthony Famoroti · Dundee, UK<br>
+ AI acknowledgement: this site was drafted with help from Claude (Anthropic), and I checked and edited all of the content.
+</footer>
+
+<script>
+{
+ for (const b of document.querySelectorAll('[data-copy]')) {
+  b.addEventListener('click', async () => {
+   try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).innerText); b.textContent = 'Copied'; }
+   catch (e) { b.textContent = 'Select & copy'; }
+   setTimeout(() => b.textContent = 'Copy', 1600);
+  });
+ }
+}
+</script>
+</body>
+</html>

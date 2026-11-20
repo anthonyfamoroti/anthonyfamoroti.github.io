@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login System in C – Source</title>
+<style>body{margin:0;font:16px/1.6 system-ui,sans-serif;background:#fff;color:#14201c}header{background:#00463c;color:#fff;padding:28px 5vw}header a{color:#e6f5c8}main{padding:28px 5vw;max-width:900px}a{color:#00695a}li{margin:8px 0}code{background:#f2f6f3;padding:1px 5px;border-radius:4px}</style></head>
+<body><header><a href="../../#projects">← Back to portfolio</a><h1 style="margin:.4em 0 0">Secure User Login System: Hash Table in C</h1></header>
+<main>
+<p>A user registration and login system that stores accounts in an 11-bucket hash table using separate chaining. Source files:</p>
+<ul>
+<li><a href="hash_table.c">hash_table.c</a>: the hash table implementation (look-up, registration, password checking, file loading, memory clean-up)</li>
+<li><a href="hash_table.h">hash_table.h</a>: the <code>User</code> and <code>HashTable</code> structs and function declarations</li>
+<li><a href="main.c">main.c</a>: a command-line program that loads users, registers a user and checks a password</li>
+<li><a href="users.txt">users.txt</a>: sample test accounts (made-up test data)</li>
+</ul>
+<h2>Build and run</h2>
+<p><code>gcc -Wall -o login main.c hash_table.c</code> then <code>./login</code></p>
+</main></body></html>
